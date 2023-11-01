@@ -1,11 +1,21 @@
 
 
-const Card = (props) => {
+const Card = () => {
     return (
-    <div class='cards'>
-      <h2>Name: {props.name}</h2>
-      <p>Title: {props.title}</p>
-      <p>Age: {props.age}</p>
+    <div class='card'>
+      <img src="fox.jpg" />   
+      {/* <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    /> */}
+      {/* <span class="material-symbols-outlined">close</span>
+    */}
+      <h2>Title</h2>
+
+      <button>close</button>
+      <button>-</button>
+      <span class="material-symbols-outlined">close</span>
+      <button>+</button>
     </div>
   );
 };
