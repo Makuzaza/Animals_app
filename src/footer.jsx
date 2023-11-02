@@ -1,7 +1,7 @@
-const Footer = (props) => {
+const Footer = () => {
     return (
     <footer>
-        {props.copyright}
+      Copyright © 2023
     </footer>
     );
 };

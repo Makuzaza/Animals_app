@@ -1,5 +1,3 @@
-import {useState} from 'react'
-import './index.css'
 import Card from './Card'
 import Header from './header'
 import Footer from './footer'
@@ -8,18 +6,18 @@ function App() {
 
   return (
 <>  
-      <Header logo="Zoo app"/>
+    <Header />
 
-      <main>
+    <main>
       <h1>Animals</h1>
-      <div>
+      <div><input id="search" type="text" placeholder="Search..." /></div>
+      <div className="cards">
         <Card />
       </div>
-      </main>
-      <Footer copyright="Copyright"/>
+    </main>
+      <Footer />
       </>
-
   );
 };
 
-export default App
+export default App;

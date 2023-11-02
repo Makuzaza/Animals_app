@@ -1,7 +1,7 @@
-const Header = (props) => {
+const Header = () => {
     return (
     <header>
-        {props.logo}
+        <h2>Zoo app</h2>
     </header>
     );
 };

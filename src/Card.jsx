@@ -1,32 +1,42 @@
-
+import React, { useState } from 'react';
 
 const Card = () => {
-    return (
-    <div class='card'>
-      <img src="fox.jpg" />   
-      {/* <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    /> */}
-      {/* <span class="material-symbols-outlined">close</span>
-    */}
-      <h2>Title</h2>
+        return (
+        <div className='card'>
+          <img class="fox" src="fox.jpg" alt="Fox" />   
+          <h2 class="title">Title</h2>
+          <button  class="close"><span class="material-symbols-outlined">close</span></button>
+          <Count />
+          </div>
+      );
+    };
 
-      <button>close</button>
-      <button>-</button>
-      <span class="material-symbols-outlined">close</span>
-      <button>+</button>
+function Count() {
+  const [count, setCount] = useState(0);
+  
+  const plus = () => {
+    setCount(count + 1);
+  }
+  
+  const minus = () => {
+    setCount(count - 1);
+  }
+  
+  let heart;
+  if (count >= 0) {
+    heart = <img class="heart" src="heart.png" alt="heart" />;
+  } else {
+    heart = <img class="heart" src="broken-heart.png" alt="broken heart" />;
+  };
+  
+  return (
+    <div class="line_heart">
+    <button class="plus" onClick={minus}>-</button>  
+    
+    <span>{heart}{count}</span>
+    <button class="minus" onClick={plus}>+</button>
     </div>
   );
-};
+}; 
 
 export default Card;
-
-
-
-// class Welcome extends Component {
-//   render() {
-//     return 
-//     <h1>Hello, {this.props.name}</h1>;
-//   }
-// }
