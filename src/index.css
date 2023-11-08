@@ -47,8 +47,9 @@ h1 {
 }
 
 .cards {
-  display: inline-block;
-  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -60,19 +61,19 @@ h1 {
   width: 200px;
   height: 310px;
   margin: 10px;
-  background-color: rgb(221, 189, 211);
+  background-color: white;
   padding: 0px;
   position: relative;
 }
 
-.material-symbols-outlined {
+.close {
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: rgb(97, 98, 99);
+  background-color: rgb(234, 237, 239);
   padding: 10px;
   border-radius: 0 0 0 20px;
-  color: aliceblue;
+  color: #333;
 }
 
 header, footer {
@@ -96,15 +97,15 @@ footer {
   align-items: center;
 }
 
-.fox {
-  width: 100%;
+.animal-image {
+  width: 200px;
   object-fit: cover;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   padding: 0px;
 }
 
-img:hover {
+.animal-image:hover {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
 }
@@ -141,7 +142,7 @@ input {
 
 .plus, .minus {
   background-color: #333;
-  color: white;
+  color: rgb(255, 255, 255);
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
@@ -149,7 +150,7 @@ input {
 }
 
 .plus:hover, .minus:hover {
-  background-color: white;
+  background-color: rgb(216, 100, 100);
   color: black;
   padding: 10px;
   border-radius: 5px;
