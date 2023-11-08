@@ -5,7 +5,7 @@ const Card = () => {
         <div className='card'>
           <img class="fox" src="fox.jpg" alt="Fox" />   
           <h2 class="title">Title</h2>
-          <button  class="close"><span class="material-symbols-outlined">close</span></button>
+          <button  class="close"><span class="material-symbols-outlined">X</span></button>
           <Count />
           </div>
       );
