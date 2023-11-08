@@ -64,6 +64,11 @@ h1 {
   background-color: white;
   padding: 0px;
   position: relative;
+  transition: all 0.4s;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px #333;
 }
 
 .close {
@@ -75,6 +80,12 @@ h1 {
   border-radius: 0 0 0 20px;
   color: #333;
 }
+
+.close:hover {
+  background-color: #333;
+  color: white;
+}
+
 
 header, footer {
   width: 100%;
@@ -105,9 +116,10 @@ footer {
   padding: 0px;
 }
 
-.animal-image:hover {
+.card:hover .animal-image {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
+  filter: saturate(1.5);
 }
 
 .line_heart {
