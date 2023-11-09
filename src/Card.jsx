@@ -7,7 +7,7 @@ const Card = ({ name, likes, click }) => {
         <div className='card'>
           <img class="animal-image" src={imageUrl} alt={name} />   
           <h2 class="title">{name}</h2>
-          <button  class="close" onClick={click}><span class="material-symbols-outlined">X</span></button>
+          <button  class="close" onClick={click}><span class="material-symbols-outlined">close</span></button>
           <Count likes={likes}/>
           </div>
       );
@@ -33,11 +33,20 @@ function Count() {
   
   return (
     <div class="line_heart">
-    <button class="plus" onClick={minus}>-</button>  
-    
-    <span>{likes}{count}</span>
-    <button class="minus" onClick={plus}>+</button>
+    <div className='count'><button class="minus" onClick={minus}>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+      <span class="material-symbols-outlined">
+heart_minus
+</span>
+</button>  
     </div>
+    <div className='likes'>{likes}{count}</div>
+    <div className='count'><button class="plus" onClick={plus}>
+      <span class="material-symbols-outlined">
+heart_plus
+</span>
+</button>
+    </div></div>
   );
 }; 
 

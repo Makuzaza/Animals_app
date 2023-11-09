@@ -1,3 +1,4 @@
+// import React and required components and data
 import React, { useState } from 'react'
 import './index.css'
 import Card from './Card'
@@ -6,6 +7,7 @@ import Footer from './footer'
 import { animals } from './animalsList'
 import { birds } from './animalsList'
 
+// initialize state variables: useState - hook, animalList and search - variables
 function App() {
   const [animalList, setAnimals] = useState(animals);
   const [search, setSearch] = useState('');
@@ -15,6 +17,7 @@ function App() {
     setAnimals(updatedArray)
   };
 
+// event handlers for switching animal types and searching
   const switchType = (animalType) => {
     if (animalType === 'animals') {
       setAnimals(animals);
@@ -23,15 +26,34 @@ function App() {
     };
   };
 
+// const searchInput = (event) => {
+//     const searchTerm = event.target.value.toLowerCase();
+  
+//     // Filter the animal list based on the search query
+//     const filteredData = animals.filter((animal) => {
+//       const choosingName = animal.name.toLowerCase().includes(searchTerm);
+//       return choosingName;
+//     });
+  
+//     setAnimals(filteredData);
+//   };
+
+// input change event as a parameter, arrow function
   const searchInput = (event) => {
-    setSearch(event.target.value);
+    //  current value from the input field and converts it to lowercase
     const searchTerm = event.target.value.toLowerCase();
-    const filteredData = animalList.filter((animal) => {
-      const choosingName = animal.name.toLowerCase().includes(searchTerm);
-      return choosingName;
-    });
+    setSearch(searchTerm);
+
+    if (searchTerm === '') {
+      setAnimals(animals);
+    } else {
+      const filteredData = animalList.filter((animal) => {
+        const choosingName = animal.name.toLowerCase().includes(searchTerm);
+        return choosingName;
+      });
+    // set the animalList state to the filtered data
     setAnimals(filteredData);
-  };
+  }};
 
   return (
 <>  
