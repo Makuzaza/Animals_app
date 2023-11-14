@@ -37,6 +37,21 @@ function App() {
     setSearch(event.target.value);
   }
 
+//   const likesHandler = (name, action) => {
+//     const updatedArray = animalList.map((animal) => {
+//       if (animal.name === name) {
+//         if (action === "like") {
+//           return {...animal, likes: animal.likes + 1};
+//         } else {
+//           return { ...animal, likes: animal.likes - 1};
+//         }
+//       } else {
+//         return animal;
+//   }
+// }); 
+// setAnimals(updatedArray)
+// };
+
   return (
 <>  
     <Header searchHandler={searchHandler} />
@@ -54,9 +69,29 @@ function App() {
       </div> */}
       <div className="cards">
            {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
-            (<Card key={i} name={animal.name} likes={animal.likes} click={() => removeHandler(i)}/>
+            (<Card key={i} 
+              name={animal.name} 
+              likes={animal.likes} 
+              click={() => removeHandler(i)}/>
           ))}
-        </div></div>
+        </div>
+        {/* <div className="cards">
+          {animalList
+            .filter((animal) =>
+              animal.name.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((animal) => (
+              <Card
+                key={animal.name}
+                {...animal}
+                close={() => removeHandler(animal.name)}
+                like={() => likesHandler(animal.name, "like")}
+                dislike={() => likesHandler(animal.name, "dislike")}
+                votes={animal.likes}
+              />
+            ))}
+        </div> */}
+        </div>
     </main>
       <Footer />
       </>
