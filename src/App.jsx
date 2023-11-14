@@ -39,21 +39,22 @@ function App() {
 //   };
 
 // input change event as a parameter, arrow function
-  const searchInput = (event) => {
+  const searchHandler = (event) => {
     //  current value from the input field and converts it to lowercase
-    const searchTerm = event.target.value.toLowerCase();
-    setSearch(searchTerm);
-
-    if (searchTerm === '') {
-      setAnimals(animals);
-    } else {
-      const filteredData = animalList.filter((animal) => {
-        const choosingName = animal.name.toLowerCase().includes(searchTerm);
-        return choosingName;
-      });
-    // set the animalList state to the filtered data
-    setAnimals(filteredData);
-  }};
+    // const searchTerm = event.target.value;
+    // setSearch(searchTerm);
+    setSearch(event.target.value);
+  }
+  //   if (searchTerm === '') {
+  //     setAnimals(animals);
+  //   } else {
+  //     const filteredData = animalList.filter((animal) => {
+  //       const choosingName = animal.name.toLowerCase().includes(searchTerm);
+  //       return choosingName;
+  //     });
+  //   // set the animalList state to the filtered data
+  //   setAnimals(filteredData);
+  // }};
 
   return (
 <>  
@@ -67,19 +68,19 @@ function App() {
       id="search" 
       type="text" 
       placeholder="Search..." 
-      value={search}
-      onChange={searchInput}
+      // value={search}
+      onChange={searchHandler}
       />
       </div>
       <div className="cards">
-           {animalList.map((animal, i) => (
-            <Card key={i} name={animal.name} likes={animal.likes} click={() => removeHandler(i)}/>
+           {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
+            (<Card key={i} name={animal.name} likes={animal.likes} click={() => removeHandler(i)}/>
           ))};
         </div>
     </main>
       <Footer />
       </>
   );
-};
+}
 
 export default App;
