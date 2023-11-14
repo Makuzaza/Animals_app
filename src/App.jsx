@@ -16,6 +16,11 @@ function App() {
     const updatedArray = animalList.filter((animal, i) => i !== index); 
     setAnimals(updatedArray)
   };
+  
+  // const removeHandler = (name) => {
+  //   const updatedArray = animalList.filter((animal) => animal.name !== name); 
+  //   setAnimals(updatedArray)
+  // };
 
 // event handlers for switching animal types and searching
   const switchType = (animalType) => {
@@ -26,57 +31,32 @@ function App() {
     };
   };
 
-// const searchInput = (event) => {
-//     const searchTerm = event.target.value.toLowerCase();
-  
-//     // Filter the animal list based on the search query
-//     const filteredData = animals.filter((animal) => {
-//       const choosingName = animal.name.toLowerCase().includes(searchTerm);
-//       return choosingName;
-//     });
-  
-//     setAnimals(filteredData);
-//   };
-
 // input change event as a parameter, arrow function
   const searchHandler = (event) => {
-    //  current value from the input field and converts it to lowercase
-    // const searchTerm = event.target.value;
-    // setSearch(searchTerm);
+    //  current value from the input field
     setSearch(event.target.value);
   }
-  //   if (searchTerm === '') {
-  //     setAnimals(animals);
-  //   } else {
-  //     const filteredData = animalList.filter((animal) => {
-  //       const choosingName = animal.name.toLowerCase().includes(searchTerm);
-  //       return choosingName;
-  //     });
-  //   // set the animalList state to the filtered data
-  //   setAnimals(filteredData);
-  // }};
 
   return (
 <>  
-    <Header />
+    <Header searchHandler={searchHandler} />
     <main>
-      <div>
+      <div className='parts'><div>
         <button onClick={() => switchType('animals')}><h1>Animals</h1></button>
         <button onClick={() => switchType('birds')}><h1>Birds</h1></button>
       </div>
-      <div><input 
+      {/* <div><input 
       id="search" 
       type="text" 
       placeholder="Search..." 
-      // value={search}
       onChange={searchHandler}
       />
-      </div>
+      </div> */}
       <div className="cards">
            {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
             (<Card key={i} name={animal.name} likes={animal.likes} click={() => removeHandler(i)}/>
-          ))};
-        </div>
+          ))}
+        </div></div>
     </main>
       <Footer />
       </>

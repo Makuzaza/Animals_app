@@ -26,7 +26,6 @@ body {
 main {
   min-height: calc(100vh - 110px);  
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -91,8 +90,9 @@ header, footer {
 
 header { 
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  text-align: left;
   padding-left: 20px;
 }
 
