@@ -1,11 +1,17 @@
 // import React and required components and data
 import React, { useState } from 'react'
 import './index.css'
-import Card from './Card'
-import Header from './header'
-import Footer from './footer'
-import { animals } from './animalsList'
-import { birds } from './animalsList'
+import Card from './components/Card';
+import Header from './components/header';
+import Footer from './components/footer';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './routes/home';
+import Animals from './routes/animals';
+import Birds from './routes/birds';
+import Root from './routes/root';
+import ErrorPage from './routes/error';
+import { animals } from './animalsList';
+import { birds } from './animalsList';
 
 // initialize state variables: useState - hook, animalList and search - variables
 function App() {
@@ -23,13 +29,13 @@ function App() {
   // };
 
 // event handlers for switching animal types and searching
-  const switchType = (animalType) => {
-    if (animalType === 'animals') {
-      setAnimals(animals);
-    } else if (animalType === 'birds') {
-      setAnimals(birds);
-    };
-  };
+  // const switchType = (animalType) => {
+  //   if (animalType === 'animals') {
+  //     setAnimals(animals);
+  //   } else if (animalType === 'birds') {
+  //     setAnimals(birds);
+  //   };
+  // };
 
 // input change event as a parameter, arrow function
   const searchHandler = (event) => {
@@ -52,50 +58,81 @@ function App() {
 // setAnimals(updatedArray)
 // };
 
+const router = createBrowserRouter([
+  { path: '/', element:<Root/>, 
+  errorElement: <ErrorPage/>, children: [
+    { path: '/', element: <Home/> },
+    { path: '/animals', 
+    element: (<Animals 
+      searchHandler={searchHandler} 
+      removeHandler={removeHandler} 
+      search={search} 
+      animalList={animals}/>),
+    },
+    { path: '/birds', 
+    element: (<Birds 
+      searchHandler={searchHandler} 
+      removeHandler={removeHandler} 
+      search={search} 
+      animalList={birds}/>),
+    }
+  ]}
+]);
+
   return (
-<>  
-    <Header searchHandler={searchHandler} />
-    <main>
-      <div className='parts'><div>
-        <button onClick={() => switchType('animals')}><h1>Animals</h1></button>
-        <button onClick={() => switchType('birds')}><h1>Birds</h1></button>
+<div>  
+<RouterProvider router = {router} />
       </div>
-      {/* <div><input 
-      id="search" 
-      type="text" 
-      placeholder="Search..." 
-      onChange={searchHandler}
-      />
-      </div> */}
-      <div className="cards">
-           {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
-            (<Card key={i} 
-              name={animal.name} 
-              likes={animal.likes} 
-              click={() => removeHandler(i)}/>
-          ))}
-        </div>
-        {/* <div className="cards">
-          {animalList
-            .filter((animal) =>
-              animal.name.toLowerCase().includes(search.toLowerCase())
-            )
-            .map((animal) => (
-              <Card
-                key={animal.name}
-                {...animal}
-                close={() => removeHandler(animal.name)}
-                like={() => likesHandler(animal.name, "like")}
-                dislike={() => likesHandler(animal.name, "dislike")}
-                votes={animal.likes}
-              />
-            ))}
-        </div> */}
-        </div>
-    </main>
-      <Footer />
-      </>
   );
 }
 
 export default App;
+
+// return (
+//   <div>  
+//   <RouterProvider router = {router} />
+      {/* <Header searchHandler={searchHandler} />
+      <main>
+        <div className='parts'><div>
+          <button onClick={() => switchType('animals')}><h1>Animals</h1></button>
+          <button onClick={() => switchType('birds')}><h1>Birds</h1></button>
+        </div> */}
+        {/* <div><input 
+        id="search" 
+        type="text" 
+        placeholder="Search..." 
+        onChange={searchHandler}
+        />
+        </div> */}
+        {/* <div className="cards">
+             {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
+              (<Card key={i} 
+                name={animal.name} 
+                likes={animal.likes} 
+                click={() => removeHandler(i)}/>
+            ))}
+          </div> */}
+          {/* <div className="cards">
+            {animalList
+              .filter((animal) =>
+                animal.name.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((animal) => (
+                <Card
+                  key={animal.name}
+                  {...animal}
+                  close={() => removeHandler(animal.name)}
+                  like={() => likesHandler(animal.name, "like")}
+                  dislike={() => likesHandler(animal.name, "dislike")}
+                  votes={animal.likes}
+                />
+              ))}
+          </div> */}
+          {/* </div>
+      </main>
+        <Footer /> */}
+        {/* </div>
+    );
+  }
+  
+  export default App; */}

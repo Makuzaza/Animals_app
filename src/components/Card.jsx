@@ -31,6 +31,7 @@ const Card = ({ name, likes, click }) => {
       } else {
         likes = <img class="heart" src="broken-heart.png" alt="broken heart" />;
       };
+
       
       return (
         <div class="line_heart">
@@ -55,6 +56,8 @@ heart_plus
     </div>
   );
 }; 
+
+export default Card;
 
 // const Card = ({ name, close, dislike, like, likes }) => {
 //   return (
@@ -89,5 +92,3 @@ heart_plus
 //     </div>
 //   );
 // };
-
-export default Card;
