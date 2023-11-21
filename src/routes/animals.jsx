@@ -1,10 +1,9 @@
 import Card from '../components/Card';
-// import { animals } from '../animalsList';
 
 function Animals ({searchHandler, animalList, search, removeHandler}) {
     return (  
         <>  
-     <div><input type="text" onChange={searchHandler}></input></div>
+     <div><input type="text" placeholder='Search ...' onChange={searchHandler}></input></div>
       <main>
       <h1>Animals:</h1>
       <div className='parts'>

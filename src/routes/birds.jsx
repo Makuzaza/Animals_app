@@ -1,13 +1,13 @@
 import Card from '../components/Card';
 // import { birds } from '../animalsList';
 
-function Birds ({searchHandler, animalList, search, removeHandler}) {
-    const sortedAnimalList = [...animalList].sort((a, b) =>
-    a.name.localeCompare(b.name));
+function Birds ({searchHandler, animalList, search, removeHandlerBirds}) {
+    // const sortedAnimalList = [...animalList].sort((a, b) =>
+    // a.name.localeCompare(b.name));
 
     return (  
         <>  
-     <div><input type="text" onChange={searchHandler}></input></div>
+     <div><input type="text" placeholder='Search ...' onChange={searchHandler}></input></div>
       <main>
       <h1>Birds:</h1>
       <div className='parts'>
@@ -16,11 +16,11 @@ function Birds ({searchHandler, animalList, search, removeHandler}) {
       </div>
 
  <div className="cards">
- {sortedAnimalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
+ {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
             (<Card key={i} 
               name={animal.name} 
               likes={animal.likes} 
-              click={() => removeHandler(i)}/>
+              click={() => removeHandlerBirds(i)}/>
           ))}
         </div>
       </main>

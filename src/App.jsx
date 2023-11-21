@@ -1,9 +1,6 @@
 // import React and required components and data
 import React, { useState } from 'react'
 import './index.css'
-import Card from './components/Card';
-import Header from './components/header';
-import Footer from './components/footer';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './routes/home';
 import Animals from './routes/animals';
@@ -12,15 +9,22 @@ import Root from './routes/root';
 import ErrorPage from './routes/error';
 import { animals } from './animalsList';
 import { birds } from './animalsList';
+import AnimalPage from './components/animalPage';
 
 // initialize state variables: useState - hook, animalList and search - variables
 function App() {
   const [animalList, setAnimals] = useState(animals);
+  const [birdList, setBirds] = useState(birds);
   const [search, setSearch] = useState('');
 
   const removeHandler = (index) => {
     const updatedArray = animalList.filter((animal, i) => i !== index); 
     setAnimals(updatedArray)
+  };
+
+  const removeHandlerBirds = (index) => {
+    const updatedArray = birdList.filter((bird, i) => i !== index); 
+    setBirds(updatedArray)
   };
   
   // const removeHandler = (name) => {
@@ -67,15 +71,21 @@ const router = createBrowserRouter([
       searchHandler={searchHandler} 
       removeHandler={removeHandler} 
       search={search} 
-      animalList={animals}/>),
+      animalList={animalList}/>),
     },
     { path: '/birds', 
     element: (<Birds 
       searchHandler={searchHandler} 
-      removeHandler={removeHandler} 
+      removeHandlerBirds={removeHandlerBirds} 
       search={search} 
-      animalList={birds}/>),
-    }
+      animalList={birdList}/>),
+    },
+    { path: "animals/:name", 
+    element: <AnimalPage />},
+    // {
+    //   path: 'animals/:animalName',
+    //   element: <AnimalPage />,
+    // },
   ]}
 ]);
 

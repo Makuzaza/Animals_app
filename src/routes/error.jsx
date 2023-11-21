@@ -1,12 +1,14 @@
 import { useRouteError } from "react-router-dom";
+import '../index.css'
 
 export default function ErrorPage () {
     const error = useRouteError(); 
     return (
-        <>
-        <h1>Ups, you did it again</h1>
+        <main>
+        <h2 className="back">Ups, something went wrong</h2>
         <p>{error.statusText || error.message}</p>
-        </>
+        <p className="back"><a href='/'><div>TO HOME PAGE</div></a></p>
+        </main>
     )
 };
 
