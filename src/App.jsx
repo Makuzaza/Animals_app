@@ -15,22 +15,29 @@ import AnimalPage from './components/animalPage';
 function App() {
   const [animalList, setAnimals] = useState(animals);
   const [birdList, setBirds] = useState(birds);
+  // const [searchAnimal, setSearchAnimal] = useState('');
+  // const [searchBird, setSearchBird] = useState('');
   const [search, setSearch] = useState('');
 
-  const removeHandler = (index) => {
-    const updatedArray = animalList.filter((animal, i) => i !== index); 
+  // const removeHandler = (index) => {
+  //   const updatedArray = animalList.filter((animal, i) => i !== index); 
+  //   setAnimals(updatedArray)
+  // };
+
+  const removeHandler = (name) => {
+    const updatedArray = animalList.filter((animal) => animal.name !== name); 
     setAnimals(updatedArray)
   };
 
-  const removeHandlerBirds = (index) => {
-    const updatedArray = birdList.filter((bird, i) => i !== index); 
+  // const removeHandlerBirds = (index) => {
+  //   const updatedArray = birdList.filter((bird, i) => i !== index); 
+  //   setBirds(updatedArray)
+  // };
+
+  const removeHandlerBirds = (name) => {
+    const updatedArray = birdList.filter((bird) => bird.name !== name); 
     setBirds(updatedArray)
   };
-  
-  // const removeHandler = (name) => {
-  //   const updatedArray = animalList.filter((animal) => animal.name !== name); 
-  //   setAnimals(updatedArray)
-  // };
 
 // event handlers for switching animal types and searching
   // const switchType = (animalType) => {
@@ -42,24 +49,62 @@ function App() {
   // };
 
 // input change event as a parameter, arrow function
+  // const searchHandlerAnimal = (event) => {
+  //   setSearchAnimal(event.target.value);
+  // }
+
+  // const searchHandlerBird = (event) => {
+  //   setSearchBird(event.target.value);
+  // }
+
   const searchHandler = (event) => {
     //  current value from the input field
     setSearch(event.target.value);
   }
 
-//   const likesHandler = (name, action) => {
-//     const updatedArray = animalList.map((animal) => {
-//       if (animal.name === name) {
-//         if (action === "like") {
-//           return {...animal, likes: animal.likes + 1};
-//         } else {
-//           return { ...animal, likes: animal.likes - 1};
-//         }
+  const likesHandlerAnimal = (name, action) => {
+    const updatedArray = animalList.map((animal) => {
+      if (animal.name === name) {
+        if (action === "plus") {
+          return {...animal, likes: animal.likes + 1};
+        } else {
+          return { ...animal, likes: animal.likes - 1};
+        }
+      } else {
+        return animal;
+  }
+}); 
+setAnimals(updatedArray)
+};
+
+const likesHandlerBird = (name, action) => {
+  const updatedArray = birdList.map((bird) => {
+    if (bird.name === name) {
+      if (action === "plus") {
+        return {...bird, likes: bird.likes + 1};
+      } else {
+        return {...bird, likes: bird.likes - 1};
+      }
+    } else {
+      return bird;
+    }
+  });
+setBirds(updatedArray);
+};
+
+// const likesHandlerBird = (name, action) => {
+//   const updatedArray = animalList.map((animal) => {
+//     if (animal.name === name) {
+//       if (action === "plus") {
+//         return {...animal, likes: animal.likes + 1};
 //       } else {
-//         return animal;
-//   }
+//         return { ...animal, likes: animal.likes - 1};
+//       }
+//     } else {
+//       return animal;
+// }
 // }); 
-// setAnimals(updatedArray)
+// setBirds(updatedArray)
 // };
 
 const router = createBrowserRouter([
@@ -68,24 +113,26 @@ const router = createBrowserRouter([
     { path: '/', element: <Home/> },
     { path: '/animals', 
     element: (<Animals 
+      // searchHandler={searchHandlerAnimal} 
+      // search={searchAnimal} 
       searchHandler={searchHandler} 
-      removeHandler={removeHandler} 
       search={search} 
-      animalList={animalList}/>),
+      removeHandler={removeHandler}
+      animalList={animalList}
+      likesHandlerAnimal={likesHandlerAnimal}/>),
     },
     { path: '/birds', 
     element: (<Birds 
+      // searchHandlerBird={searchHandlerBird} 
+      // search={searchBird} 
       searchHandler={searchHandler} 
-      removeHandlerBirds={removeHandlerBirds} 
       search={search} 
-      animalList={birdList}/>),
+      removeHandlerBirds={removeHandlerBirds}
+      animalList={birdList}
+      likesHandlerBird={likesHandlerBird}/>),
     },
     { path: "animals/:name", 
-    element: <AnimalPage />},
-    // {
-    //   path: 'animals/:animalName',
-    //   element: <AnimalPage />,
-    // },
+    element: <AnimalPage />}
   ]}
 ]);
 

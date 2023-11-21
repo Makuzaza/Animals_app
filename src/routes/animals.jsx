@@ -1,24 +1,32 @@
 import Card from '../components/Card';
 
-function Animals ({searchHandler, animalList, search, removeHandler}) {
+function Animals ({searchHandler, animalList, search, removeHandler, likesHandlerAnimal}) {
+  const filteredAnimalList = animalList.filter(animal =>
+     animal.name.toLowerCase().includes(search.toLowerCase()));
+     let text;
+
     return (  
         <>  
      <div><input type="text" placeholder='Search ...' onChange={searchHandler}></input></div>
       <main>
-      <h1>Animals:</h1>
-      <div className='parts'>
-        {/* <button onClick={() => switchType('animals')}><h1>Animals</h1></button> */}
-        {/* <button onClick={() => switchType('birds')}><h1>Birds</h1></button> */}
-      </div>
-
- <div className="cards">
-           {animalList.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((animal, i) => 
-            (<Card key={i} 
+      <h1>Animals:</h1> 
+      
+      {filteredAnimalList.length === 0 ? (
+          <h2>No results</h2>
+        ) : (
+        <div className="cards">
+           {filteredAnimalList.map((animal, index) => 
+            (<Card key={index} 
+              {...animal}
+              click={() => removeHandler(animal.name)}
+              plus={() => likesHandlerAnimal(animal.name, "plus")}
+              minus={() => likesHandlerAnimal(animal.name, "minus")}
               name={animal.name} 
               likes={animal.likes} 
-              click={() => removeHandler(i)}/>
+            />
           ))}
         </div>
+         )}
       </main>
       
        </> 
@@ -27,3 +35,7 @@ function Animals ({searchHandler, animalList, search, removeHandler}) {
 
 export default Animals;
 
+  {/* <div className='parts'> */}
+        {/* <button onClick={() => switchType('animals')}><h1>Animals</h1></button> */}
+        {/* <button onClick={() => switchType('birds')}><h1>Birds</h1></button> */}
+      {/* </div> */}

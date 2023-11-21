@@ -120,6 +120,11 @@ footer {
   filter: saturate(1.1);
 }
 
+.likes.grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 .line_heart {
   display: flex;
   flex-wrap: wrap;
@@ -129,8 +134,6 @@ footer {
 
 .heart {
   width: 35px;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
 }
 
 input {
@@ -199,11 +202,13 @@ a.active {
 
 .img_animals {
   margin: 5px;
-  height: 30rem;
+  height: 35rem;
   width: 18rem;
   background-image: url('https://images.unsplash.com/photo-1606287201181-42f1340c1306');
   background-size: cover;
+  background-position: center;
   font-size: 20px;
+  padding: 10px;
   color: #333;
 }
 
@@ -213,13 +218,13 @@ a.active {
 
 .img_birds {
   margin: 5px;
-  height: 30rem;
+  height: 35rem;
   width: 18rem;
   background-image: url('https://images.unsplash.com/photo-1552943273-ba7dedee6d44');
-  text-align: center;
   background-size: cover;
   background-position: center;
   font-size: 20px;
+  padding: 10px;
   color: #333;
 }
 
@@ -250,3 +255,4 @@ ul {
 .back {
   margin: 20px;
 }
+
