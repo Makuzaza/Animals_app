@@ -7,8 +7,7 @@ import Animals from './routes/animals';
 import Birds from './routes/birds';
 import Root from './routes/root';
 import ErrorPage from './routes/error';
-import { animals } from './animalsList';
-import { birds } from './animalsList';
+import { animals, birds } from './animalsList';
 import AnimalPage from './components/animalPage';
 
 // initialize state variables: useState - hook, animalList and search - variables
@@ -56,6 +55,10 @@ function App() {
   // const searchHandlerBird = (event) => {
   //   setSearchBird(event.target.value);
   // }
+
+  const cleanHandler = () => {
+    setSearch('')
+    }
 
   const searchHandler = (event) => {
     //  current value from the input field
@@ -108,7 +111,7 @@ setBirds(updatedArray);
 // };
 
 const router = createBrowserRouter([
-  { path: '/', element:<Root/>, 
+  { path: '/', element:<Root cleanHandler={cleanHandler}/>, 
   errorElement: <ErrorPage/>, children: [
     { path: '/', element: <Home/> },
     { path: '/animals', 
@@ -132,6 +135,8 @@ const router = createBrowserRouter([
       likesHandlerBird={likesHandlerBird}/>),
     },
     { path: "animals/:name", 
+    element: <AnimalPage />},
+    { path: "birds/:name", 
     element: <AnimalPage />}
   ]}
 ]);
