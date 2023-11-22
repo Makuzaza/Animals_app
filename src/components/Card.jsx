@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Card = ({ name, click, minus, plus, likes, isBird }) => {
+const Card = ({ name, click, minus, plus, likes }) => {
   const imageUrl = `https://source.unsplash.com/400x400/?${name}`;
 
   return (
@@ -42,9 +42,6 @@ const Card = ({ name, click, minus, plus, likes, isBird }) => {
         </button>
       </div>
       <div className='see'>
-      {/* <Link to={`/${isBird ? 'birds' : 'animals'}/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
-          See more...
-        </Link> */}
         <Link to={`${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>See more...</Link>
         </div>
 
