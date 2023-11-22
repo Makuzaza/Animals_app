@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Card = ({ name, click, minus, plus, likes }) => {
+const Card = ({ name, click, minus, plus, likes, isBird }) => {
   const imageUrl = `https://source.unsplash.com/400x400/?${name}`;
 
   return (
@@ -41,7 +41,12 @@ const Card = ({ name, click, minus, plus, likes }) => {
           <span class="material-symbols-outlined">heart_plus</span>
         </button>
       </div>
-      <div className='see'><Link to={name.toLowerCase().replace(/\s+/g, '_')}>See more...</Link></div>
+      <div className='see'>
+      <Link to={`/${isBird ? 'birds' : 'animals'}/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
+          See more...
+        </Link>
+        {/* <Link to={name.toLowerCase().replace(/\s+/g, '_')}>See more...</Link> */}
+        </div>
 
     </div>
     </div>
@@ -49,6 +54,35 @@ const Card = ({ name, click, minus, plus, likes }) => {
 };
 
 export default Card;
+
+
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+
+// const Card = ({ name, click, minus, plus, likes, category }) => {
+//   const imageUrl = `https://source.unsplash.com/400x400/?${name}`;
+
+//   return (
+//     <div className="card">
+//       {/* ... other card content ... */}
+//       <div className='see'>
+//         {category === 'animal' ? (
+//           <Link to={`/animals/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
+//             See more...
+//           </Link>
+//         ) : (
+//           <Link to={`/birds/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
+//             See more...
+//           </Link>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Card;
+
+
 //     function Count() {
 //       const [count, setCount] = useState(0);
       

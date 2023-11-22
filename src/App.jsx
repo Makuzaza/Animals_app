@@ -9,6 +9,7 @@ import Root from './routes/root';
 import ErrorPage from './routes/error';
 import { animals, birds } from './animalsList';
 import AnimalPage from './components/animalPage';
+import About from './routes/about';
 
 // initialize state variables: useState - hook, animalList and search - variables
 function App() {
@@ -137,7 +138,9 @@ const router = createBrowserRouter([
     { path: "animals/:name", 
     element: <AnimalPage />},
     { path: "birds/:name", 
-    element: <AnimalPage />}
+    element: <AnimalPage />},
+    { path: '/about', 
+    element: <About />}
   ]}
 ]);
 
