@@ -42,10 +42,10 @@ const Card = ({ name, click, minus, plus, likes, isBird }) => {
         </button>
       </div>
       <div className='see'>
-      <Link to={`/${isBird ? 'birds' : 'animals'}/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
+      {/* <Link to={`/${isBird ? 'birds' : 'animals'}/${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>
           See more...
-        </Link>
-        {/* <Link to={name.toLowerCase().replace(/\s+/g, '_')}>See more...</Link> */}
+        </Link> */}
+        <Link to={`${name.toLowerCase().replace(/\s+/g, '_')}?likes=${likes}`}>See more...</Link>
         </div>
 
     </div>
