@@ -1,6 +1,6 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
 const Root = ({ cleanHandler }) => {
